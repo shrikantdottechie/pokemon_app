@@ -21,8 +21,8 @@ app.get('/pokemon/', (req, res) => {
     //res.send(fruits);
     //res.render('Show');
     //res.send('<h1>See All The Pokemon!</h1');
-    //res.render('Index',{pokemon:pokemon});
-    res.render('Index');
+    res.render('Index',{pokemon:pokemon});
+    //res.render('Index');
 });
 
 
