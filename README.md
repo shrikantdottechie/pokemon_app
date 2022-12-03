@@ -102,7 +102,7 @@ You will have to set up your jsx file
 
 Start with your html boilerplate code
 
-Add an <h1> that describes this page, i.e. 'See All The Pokemon!'
+Add an h1 that describes this page, i.e. 'See All The Pokemon!'
 
 Try adding some inline styles:
 
@@ -114,7 +114,7 @@ We can add inline CSS, which are specified as attributes and are passed to the e
 
   class MyFirstComponent extends React.Component() {
     return (
-      <div style={myStyle}>My First React Component!</div>;
+      div style={myStyle}>My First React Component! /div;
     }
   }
 Change your /pokemon route to res.render your Index.jsx file
@@ -144,7 +144,7 @@ whatever will show up in the browser
 
 Link your Index.jsx to your Show.jsx
 Inside your Index.jsx,
-For each pokemon, add an <a> tag that will have an href that goes to the route /pokemon/x, where x is the array position of the pokemon in the data array. This should be set dynamically with jsx
+For each pokemon, add an a tag that will have an href that goes to the route /pokemon/x, where x is the array position of the pokemon in the data array. This should be set dynamically with jsx
 When you click the link you should go to your show route and the index number corresponding to the pokemon's array position should be displayed
 
 🔴 Commit:
