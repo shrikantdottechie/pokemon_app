@@ -12,23 +12,23 @@ class Index extends React.Component {
                 <h1>See All The Pokemon!</h1>
                 <div style={myStyle}>My First React Index Component!</div>
                 <div>
-                <h2>Pokemon Index Page</h2>
-                <ul>
-                    {pokemon.map((role,x) => {
-                        return (
-                            <li>
-                                The{' '}
-                                <a href={`/pokemon/${x}`}>
-                                {role.name.charAt(0).toUpperCase() + role.name.substr(1).toLowerCase()}
-                                </a>{' '}
-                                is {role.img} <br></br>
-                                <br />
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
-         </>
+                    <h2>Pokemon Index Page</h2>
+                    <ul>
+                        {pokemon.map((role, x) => {
+                            return (
+                                <li>
+                                    The{' '}
+                                    <a href={`/pokemon/${x}`}>
+                                        {role.name.charAt(0).toUpperCase() + role.name.substr(1).toLowerCase()}
+                                    </a>{' '}
+                                    is {role.img} <br></br>
+                                    <br />
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            </>
         )
     }
 
