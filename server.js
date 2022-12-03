@@ -12,16 +12,18 @@ app.engine('jsx', require('express-react-views').createEngine());
 app.get('/', (req, res) => {
     res.send('Welcome to the Pokemon App!');
 });
-
+/*
 app.get('/pokemon', (req, res) => {
     res.send(pokemon);
-});
-/*
+});*/
+
 app.get('/pokemon/', (req, res) => {
     //res.send(fruits);
     //res.render('Show');
-    res.render('Index',{pokemon: pokemon});
-});*/
+    //res.send('<h1>See All The Pokemon!</h1');
+    //res.render('Index',{pokemon:pokemon});
+    res.render('Index');
+});
 
 
 //New - get a form to create a new record
