@@ -1,7 +1,6 @@
 # Poke Express
 
-
-Purpose from Curriculum Development Team: Make a Pokemon app that displays data inside server-side rendered views, learners will gain a deeper understanding of what they built in class and should have some fun with doing it. Encourage students to review class material and use it as a guide also encourage them to use the express documentation. Discourage them from using online tutorials to help them with this because they will have difficulty finding an online tutorial that is at the same level as this assignment, it will be either be too advanced or too simple and will in most cases confuse learners away from this assignments purpose. 
+Purpose from Curriculum Development Team: Make a Pokemon app that displays data inside server-side rendered views, learners will gain a deeper understanding of what they built in class and should have some fun with doing it. Encourage students to review class material and use it as a guide also encourage them to use the express documentation. Discourage them from using online tutorials to help them with this because they will have difficulty finding an online tutorial that is at the same level as this assignment, it will be either be too advanced or too simple and will in most cases confuse learners away from this assignments purpose.
 
 Learning Objectives
 Practicing index and show routes with express
@@ -39,14 +38,11 @@ touch .gitignore
 
 npm init -y
 
- 
-
 Approximate File Structure
- 
 
 🔴 Commit:
 "All my files are created"
- 
+
 Install NPM packages
 In terminal:
 
@@ -58,13 +54,10 @@ npm i express-react-views react@16 react-dom@16
 
 check your package.json
 
- 
 Approximate package.json
- 
 
 🔴 Commit:
 "All my npm packages are added"
- 
 
 Set up your server
 -In your server.js file, set up your server
@@ -80,11 +73,9 @@ GOTCHA! : nodemon will only work if you run it from the same location as your pa
 In the browser
 go to localhost:3000
 check that you have your Welcome to the Pokemon App! message displaying
- 
 
 🔴 Commit:
 "My server is set up and running"
- 
 
 Set up your 'database'
 You have created a file called pokemon.js
@@ -101,13 +92,10 @@ const pokemon = [
 Set up your 'database' so that it can be exported to your server.js and then be required by your server.js
 Set this 'database' to a variable called pokemon in your server.js file
 Create a get route /pokemon that will res.send(pokemon), which will display your pokemon data as json in the browser
- 
 
 🔴 Commit:
 "Connected my database, can see json in the browser"
- 
 
-Set up your index view
 Instead of displaying json at your /pokemon route, you should serve the Index.jsx file you created that will display your pokemon
 
 You will have to set up your jsx file
@@ -133,43 +121,34 @@ Change your /pokemon route to res.render your Index.jsx file
 
 In your browser, go to localhost:3000/pokemon and be sure to see your Index.jsx view with an h1 tag
 
- 
-
 🔴 Commit:
 "index.jsx view rendered at pokemon route"
- 
 
 Set up your index view to show your pokemon data
 Continue working on your Index.jsx view so that you can see:
 The name of each pokemon, as a list item, inside an unordered list
 This list should be dynamically rendered by jsx based on your data from your 'database'
 You'll notice the pokemon names aren't properly capitalized! Let's fix that! Manipulate the data programatically to capitalize the first letter of their names
- 
 
 🔴 Commit:
 "I can view a list of all my pokemon in the browser"
- 
 
 Setting up your show route
 Inside your server.js, add a new get route /pokemon/:id
 That will res.send(req.params.id);
 So, when you go to localhost:3000/pokemon/whatever
 whatever will show up in the browser
- 
 
 🔴 Commit:
 "Show view shows req.params.id "
- 
 
 Link your Index.jsx to your Show.jsx
 Inside your Index.jsx,
 For each pokemon, add an <a> tag that will have an href that goes to the route /pokemon/x, where x is the array position of the pokemon in the data array. This should be set dynamically with jsx
 When you click the link you should go to your show route and the index number corresponding to the pokemon's array position should be displayed
- 
 
 🔴 Commit:
 "Added dynamic anchor tags to index.jsx "
- 
 
 Render your individual pokemon in the show view
 Copy/paste your code from your Index.jsx into your Sshow.jsx`
@@ -180,7 +159,6 @@ Add an image tag that will display an image of the pokemon
 Add an anchor tag with the text of back, that will take you back to your Index.jsx view
 Update the route in the server.js to render the show view with the pokemon data
 Oh no! The image is broken because in our database the image links don't have the .jpg ending, let's fix that programatically! Without going back to the database and editing it there, add on .jpg to the end of the pokemon's image data
- 
 
 🔴 Commit:
 "Created show views of each pokemon"
