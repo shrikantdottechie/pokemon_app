@@ -44,12 +44,9 @@ npm init -y
 Approximate File Structure
  
 
- 
-
 🔴 Commit:
 "All my files are created"
  
-
 Install NPM packages
 In terminal:
 
@@ -62,10 +59,7 @@ npm i express-react-views react@16 react-dom@16
 check your package.json
 
  
-
 Approximate package.json
- 
-
  
 
 🔴 Commit:
