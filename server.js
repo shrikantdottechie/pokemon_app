@@ -35,16 +35,17 @@ app.get('/pokemon/', (req, res) => {
 
 //Show route = Show a particular record
 //add show route
-/*
-app.get('/fruits/:indexOfFruitsArray', (req, res) => {
-    res.send(fruits[req.params.indexOfFruitsArray]);
-});*/
 
-app.get('/pokemon/:indexOfPokemonArray', function(req, res){
+app.get('/pokemon/:id', (req, res) => {
+    console.log(req.params);
+    res.send(req.params.id);
+});
+/*
+app.get('/pokemon/:id', function(req, res){
     res.render('Show', { //second param must be an object
-        pokemon: pokemon[req.params.indexOfPokemonArray] //there will be a variable available inside the ejs file called fruit, its value is fruits[req.params.indexOfFruitsArray]
+        pokemon: pokemon[req.params.id] //there will be a variable available inside the ejs file called fruit, its value is fruits[req.params.indexOfFruitsArray]
     });
-});    
+});  */  
 
 app.listen(port, () => {
     console.log('listening');
