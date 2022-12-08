@@ -1,12 +1,27 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+
 const port = process.env.PORT || 3000;
 const pokemon = require('./models/pokemon.js'); //NOTE: it must start with ./ if it's just a file, not an NPM package
 //const Show = require('./views/Show.jsx');
 //const Show = require('./views/Show.jsx');
+app.use((req, res, next) => {
+    console.log('I run for all routes');
+    next();
+});
+
+//near the top, around other app.use() calls
+app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
-
+//... and then farther down the file
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connection.once('open', () => {
+    console.log('connected to mongo');
+});
+mongoose.set('strictQuery', true);
 
 //index route = Show all
 
@@ -28,9 +43,26 @@ app.get('/pokemon/', (req, res) => {
 
 
 //New - get a form to create a new record
+app.get('/pokemon/new', (req, res) => {
+    res.render('New');
+});
+
 //Delete - Delete  this one record
 //Update - modifying a record
 //Create - send the filled form to DB and create a new record
+app.post('/pokemon', (req, res) => {
+   /* if (req.body.readyToEat === 'on') { //if checked, req.body.readyToEat is set to 'on'
+        req.body.readyToEat = true;//do some data correction
+    } else { //if not checked, req.body.readyToEat is undefined
+        req.body.readyToEat = false;//do some data correction
+    }*/
+    pokemon.create(req.body, (error, createdPokemon) => {
+        res.redirect('/pokemon'); // send the user back to /fruits
+    });
+    /*fruits.push(req.body);
+    console.log(req.body);
+    res.redirect('/fruits');*/ //send the user back to /fruits
+});
 //Edit - go to DB to and get the record to update
 
 
