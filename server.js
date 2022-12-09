@@ -4,9 +4,8 @@ const app = express();
 const mongoose = require('mongoose');
 
 const port = process.env.PORT || 3000;
-const pokemon = require('./models/pokemon.js'); //NOTE: it must start with ./ if it's just a file, not an NPM package
-//const Show = require('./views/Show.jsx');
-//const Show = require('./views/Show.jsx');
+const Pokemon = require('./models/pokemon.js'); //NOTE: it must start with ./ if it's just a file, not an NPM package
+
 app.use((req, res, next) => {
     console.log('I run for all routes');
     next();
@@ -33,15 +32,18 @@ app.get('/pokemon', (req, res) => {
     res.send(pokemon);
 });*/
 
-app.get('/pokemon/', (req, res) => {
+app.get('/pokemon', (req, res) => {
     //res.send(fruits);
     //res.render('Show');
     //res.send('<h1>See All The Pokemon!</h1');
-    res.render('Index', { pokemon: pokemon });
-    //res.render('Index');
+    Pokemon.find({}, (err, allPokemon) => {
+        res.render('Index', { //second param must be an object
+            pokemon: allPokemon// getting all pokemon from db to pass as props
+        });
+
+    });
+
 });
-
-
 //New - get a form to create a new record
 app.get('/pokemon/new', (req, res) => {
     res.render('New');
@@ -51,17 +53,11 @@ app.get('/pokemon/new', (req, res) => {
 //Update - modifying a record
 //Create - send the filled form to DB and create a new record
 app.post('/pokemon', (req, res) => {
-   /* if (req.body.readyToEat === 'on') { //if checked, req.body.readyToEat is set to 'on'
-        req.body.readyToEat = true;//do some data correction
-    } else { //if not checked, req.body.readyToEat is undefined
-        req.body.readyToEat = false;//do some data correction
-    }*/
-    pokemon.create(req.body, (error, createdPokemon) => {
-        res.redirect('/pokemon'); // send the user back to /fruits
+
+    Pokemon.create(req.body, (error, createdPokemon) => {
+        res.redirect('/pokemon'); // send the user back to /pokemon
     });
-    /*fruits.push(req.body);
-    console.log(req.body);
-    res.redirect('/fruits');*/ //send the user back to /fruits
+
 });
 //Edit - go to DB to and get the record to update
 
@@ -73,17 +69,26 @@ app.post('/pokemon', (req, res) => {
     console.log(req.params);
     res.send(req.params.id);
 });*/
-
+app.get('/pokemon/:id', function (req, res) {
+    Pokemon.findById(req.params.id, (err, foundPokemon) => {
+        res.render('Show', { //second param must be an object
+            pokemon: foundPokemon
+        });
+    });
+});
+/*
 app.get('/pokemon/:id', (req, res) => {
     console.log(req.params);
     res.render('Show', { pokemon: pokemon[req.params.id] });
 });
+*/
 /*
 app.get('/pokemon/:id', function(req, res){
     res.render('Show', { //second param must be an object
         pokemon: pokemon[req.params.id] //there will be a variable available inside the ejs file called pokemon, its value is pokemon[req.params.id]
     });
-});   */
+});   
+*/
 
 app.listen(port, () => {
     console.log('listening');

@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 const pokemonSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    img: { type: String, required: true }
+    image: { type: String, required: true }
     //readyToEat: Boolean
 });
 
-const pokemon = mongoose.model('pokemon', pokemonSchema);
+const Pokemon = mongoose.model('pokemon', pokemonSchema);
 /*const pokemon = [
     {name: "bulbasaur", img: "http://img.pokemondb.net/artwork/bulbasaur"},
     {name: "ivysaur", img: "http://img.pokemondb.net/artwork/ivysaur"},
@@ -17,4 +17,4 @@ const pokemon = mongoose.model('pokemon', pokemonSchema);
     {name: "wartortle", img: "http://img.pokemondb.net/artwork/wartortle"}
  ];*/
 
- module.exports = pokemon;
+ module.exports = Pokemon;

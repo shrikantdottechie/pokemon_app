@@ -1,5 +1,5 @@
 const React = require('react');
-const pokemon = require('../models/pokemon.js');
+
 const myStyle = {
     color: '#ffffff',
     backgroundColor: '#000000',
@@ -7,6 +7,7 @@ const myStyle = {
 class Show extends React.Component {
     render() {
         const { pokemon } = this.props;
+        //console.log(this.props);
         return (
             <>
                 <h1>Gotta Catch 'Em All</h1>
@@ -21,7 +22,7 @@ class Show extends React.Component {
                             <h2>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.substr(1).toLowerCase()}</h2>
                             {' '}
                             {' '}
-                            <img src={pokemon.img + '.jpg'} />
+                            <img src={pokemon.image + '.jpg'} />
                             <br></br>
                             {' '}
                             <a href='\pokemon'>
@@ -31,6 +32,7 @@ class Show extends React.Component {
                         </li>
                     </ul>
                 </div>
+
             </>
         )
     }

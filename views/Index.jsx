@@ -1,12 +1,12 @@
 const React = require('react');
-//const pokemon = require('../models/pokemon.js');
+
 const myStyle = {
     color: '#ffffff',
     backgroundColor: '#000000',
 };
 class Index extends React.Component {
     render() {
-        const {pokemon} = this.props;
+        const { pokemon } = this.props;
         return (
             <>
                 <h1>See All The Pokemon!</h1>
@@ -18,21 +18,22 @@ class Index extends React.Component {
                             <a href="/pokemon/new">Create a New Pokemon</a>
                         </nav>
                         <ul>
-                            {pokemon.map((role, id) => {
+                            {pokemon.map((role, i) => {
                                 return (
-
                                     <li>
                                         The
                                         {' '}
-                                        <a href={`/pokemon/${id}`}>
+                                        <a href={`/pokemon/${role.id}`}>
                                             {role.name.charAt(0).toUpperCase() + role.name.substr(1).toLowerCase()}
                                         </a>
                                         {' '}
-                                        is {role.img} <br></br>
+
+                                        <br />
+                                        <br></br>
                                         <br />
                                     </li>
-                                );
-                            })};
+                                )
+                            })}
                         </ul>
                     </>
                 </div>
