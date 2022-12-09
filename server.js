@@ -33,9 +33,7 @@ app.get('/pokemon', (req, res) => {
 });*/
 
 app.get('/pokemon', (req, res) => {
-    //res.send(fruits);
-    //res.render('Show');
-    //res.send('<h1>See All The Pokemon!</h1');
+    
     Pokemon.find({}, (err, allPokemon) => {
         res.render('Index', { //second param must be an object
             pokemon: allPokemon// getting all pokemon from db to pass as props
@@ -64,11 +62,6 @@ app.post('/pokemon', (req, res) => {
 
 //Show route = Show a particular record
 //add show route
-
-/*app.get('/pokemon/:id', (req, res) => {
-    console.log(req.params);
-    res.send(req.params.id);
-});*/
 app.get('/pokemon/:id', function (req, res) {
     Pokemon.findById(req.params.id, (err, foundPokemon) => {
         res.render('Show', { //second param must be an object
@@ -82,13 +75,7 @@ app.get('/pokemon/:id', (req, res) => {
     res.render('Show', { pokemon: pokemon[req.params.id] });
 });
 */
-/*
-app.get('/pokemon/:id', function(req, res){
-    res.render('Show', { //second param must be an object
-        pokemon: pokemon[req.params.id] //there will be a variable available inside the ejs file called pokemon, its value is pokemon[req.params.id]
-    });
-});   
-*/
+
 
 app.listen(port, () => {
     console.log('listening');
